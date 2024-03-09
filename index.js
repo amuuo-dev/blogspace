@@ -23,8 +23,15 @@ fetch("https://apis.scrimba.com/jsonplaceholder/posts")
 })
 document.getElementById("new-post").addEventListener("submit",function(e){
     e.preventDefault()
-    const postTitle=titleInput.value
-    const postBody=bodyInput.value
+    const postTitle = titleInput.value.trim(); // Trim to remove leading and trailing whitespace
+    const postBody = bodyInput.value.trim(); // Trim to remove leading and trailing whitespace
+
+        // Check if both title and body are not empty
+    if (postTitle === '' || postBody === '') {
+      alert("Both title and body fields are required.");
+      return;
+  }
+
     const data={
         title: postTitle,
         body: postBody
